@@ -1,20 +1,38 @@
 //raceRunners main script.
 //js is linked to html correctly.
 let age = 0;
+let registeredEarly = false;
 const ageinput = document.getElementById("age");
 const submit = document.getElementById("submit");
 
 
 
 getAge = () => {
-  console.log("getAge called")
  ageinput.value > 0 ? age = ageinput.value : alert("Please enter age");
+ ageinput.value = "";
+}
+
+getRace = () => {
+  const yes = document.getElementById("yes").checked;
+  const no = document.getElementById("no").checked;
+  if (yes === true) {
+    registeredEarly = true;
+    console.log("early race")
+  }
+  else if (no === true) {
+    registeredEarly = false;
+    console.log("late race")
+  }
+  else {
+    console.log("confused. - no race selected.")
+    alert("Please select a race.")
+  }
 }
 
 registration = () => {
 
   let raceNumber = Math.floor(Math.random() * 1000);
-let registeredEarly = true;
+
 let adultRaceNumber = raceNumber + 1000;
 
   if (age > 18 && registeredEarly === true) {
@@ -37,4 +55,10 @@ let adultRaceNumber = raceNumber + 1000;
 
 test = () => {console.log('testfunction')}
 
-submit.addEventListener("click", getAge)
+run = () => {
+  getAge()
+  getRace()
+  registration()
+}
+
+submit.addEventListener("click", run)
