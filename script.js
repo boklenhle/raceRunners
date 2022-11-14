@@ -53,8 +53,6 @@ let adultRaceNumber = raceNumber + 1000;
   }
 }
 
-test = () => {console.log('testfunction')}
-
 run = () => {
   getAge()
   getRace()
